@@ -19,13 +19,15 @@ public class LeaderBoardEntry : MonoBehaviour
         
     }
 
-    void SetLeaderboardValues(int rank,string user,int wins,int losses)
+    public void SetLeaderboardValues(int rank,string user,int wins,int losses)
     {
         int total = wins + losses;
         float percent = (wins / total);
         double WR = System.Math.Round(percent, 1);
 
-        rankText.text = rank.ToString();
+        Debug.Log(rank);
+
+        this.rankText.text = rank.ToString();
         userText.text = user;
         winsText.text = wins.ToString();
         lossesText.text = losses.ToString();

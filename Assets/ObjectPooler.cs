@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Pool
+public class PoolClass
 {
-    public string name;
-    public GameObject objectPrefab;
-    public int size;
+	[SerializeField] public string objectName;
+	[SerializeField] public GameObject objectPrefab;
+	[SerializeField] public int size;
 
-	public Pool(string objName,GameObject obj,int objSize)
+	public PoolClass(string objName, GameObject obj, int objSize)
 	{
-		name = objName;
+		objectName = objName;
 		objectPrefab = obj;
 		size = objSize;
 	}
 }
 
+
 public class ObjectPooler : MonoBehaviour
 {
 
-	//public static ObjectPooler SharedInstance;
-	[SerializeField] List<Pool> itemsToPool;
+	[SerializeField] public List<PoolClass> itemsToPool;
 
 	List<List<GameObject>> pooledObjectsList;
 	List<GameObject> pooledObjects;
@@ -31,8 +31,6 @@ public class ObjectPooler : MonoBehaviour
 
 	void Awake()
 	{
-
-		//SharedInstance = this;
 
 		pooledObjectsList = new List<List<GameObject>>();
 		pooledObjects = new List<GameObject>();
@@ -78,7 +76,7 @@ public class ObjectPooler : MonoBehaviour
 
 	void ObjectPoolItemToPooledObject(int index)
 	{
-		Pool item = itemsToPool[index];
+		PoolClass item = itemsToPool[index];
 
 		pooledObjects = new List<GameObject>();
 		for (int i = 0; i < item.size; i++)
@@ -96,5 +94,10 @@ public class ObjectPooler : MonoBehaviour
 	public List<GameObject> GetAllPooledObjects(int index)
 	{
 		return pooledObjectsList[index];
+	}	
+	
+	public GameObject GetPooledObject(int objIndex,int itemIndex)
+	{
+		return pooledObjectsList[objIndex][itemIndex];
 	}
 }

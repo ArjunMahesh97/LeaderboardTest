@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\LeaderBoardEntry.cs" />
+    <Compile Include="Assets\LeaderboardManager.cs" />
     <Compile Include="Assets\ObjectPooler.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

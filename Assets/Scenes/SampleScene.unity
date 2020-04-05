@@ -731,6 +731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 698773502}
+  - component: {fileID: 698773503}
   m_Layer: 5
   m_Name: LeaderboardTable
   m_TagString: Untagged
@@ -766,6 +767,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &698773503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698773501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9c79949ef39e94ebf5ca735a99c6c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxElements: 100
+  startElementIndex: 50
+  leaderboardEntryContainer: {fileID: 201078691}
+  objectPooler: {fileID: 1584940817}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,7 +1208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsToPool:
-  - name: LeaderboardEntries
+  - objectName: LeaderboardEntries
     objectPrefab: {fileID: 2207560893405573212, guid: d2ca362230d808d438dc977d7db4522f,
       type: 3}
     size: 100
