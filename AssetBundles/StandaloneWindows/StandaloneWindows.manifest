@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2481489288
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: leaderboard.prefab
+      Dependencies: {}
