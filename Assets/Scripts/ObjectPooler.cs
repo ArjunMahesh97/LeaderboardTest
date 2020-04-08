@@ -6,7 +6,7 @@ using UnityEngine;
 public class PoolClass
 {
 	[SerializeField] public string objectName;
-	public GameObject objectPrefab;
+	[SerializeField] public GameObject objectPrefab;
 	[SerializeField] public int size;
 
 	public PoolClass(string objName, GameObject obj, int objSize)
@@ -24,12 +24,11 @@ public class ObjectPooler : MonoBehaviour
 
 	[SerializeField] public List<PoolClass> itemsToPool;
 	[SerializeField] string loadAssetName;
+	[SerializeField] Transform parentTransform;
 
 	List<List<GameObject>> pooledObjectsList;
 	List<GameObject> pooledObjects;
 	List<int> positions;
-
-	[SerializeField] Transform parentTransform;
 
 	void Awake()
 	{
@@ -42,7 +41,7 @@ public class ObjectPooler : MonoBehaviour
 
 		for (int i = 0; i < itemsToPool.Count; i++)
 		{
-			ObjectPoolItemToPooledObject(i);
+			InstantiatePooledItems(i);
 		}
 
 	}
@@ -66,22 +65,24 @@ public class ObjectPooler : MonoBehaviour
 	}
 
 
-	void ObjectPoolItemToPooledObject(int index)
+	void InstantiatePooledItems(int index)
 	{
 		PoolClass item = itemsToPool[index];
+
 		if (item.objectPrefab == null)
 		{
 			item.objectPrefab = bundleLoader.GetObjectFromBundle(loadAssetName);
 		}
 
-		pooledObjects = new List<GameObject>();
+		//pooledObjects = new List<GameObject>();
+
 		for (int i = 0; i < item.size; i++)
 		{
-			GameObject obj = (GameObject)Instantiate(item.objectPrefab);
-			obj.SetActive(false);
-			obj.transform.parent = parentTransform;
+			GameObject obj = (GameObject)Instantiate(item.objectPrefab,parentTransform);
+			obj.SetActive(false);			
 			pooledObjects.Add(obj);
 		}
+
 		pooledObjectsList.Add(pooledObjects);
 		positions.Add(0);
 
